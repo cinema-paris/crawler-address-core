@@ -54,7 +54,7 @@ module Crawler
     end
 
     def self.best(street, zipcode, city, country)
-      data = search(street, zipcode, city, country).max_by do |_, addresses|
+      data = search(street, zipcode, city, country)&.max_by do |_, addresses|
         address = addresses.max_by do |address|
           address[:score]
         end
