@@ -62,7 +62,9 @@ module Crawler
         address[:score]
       end
 
-      data&.last
+      data&.last&.max_by do |address|
+        address[:score]
+      end&.dig(:data)
     end
   end
 end
